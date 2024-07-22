@@ -45,13 +45,18 @@
     </style>
 </head>
 <body>
-    <meta http-equiv="refresh" content="10;url=https://www.yuque.com/catnies/uhopov?#">
+    <meta http-equiv="refresh" content="10;url=" id="redirect-meta">
     <div class="loading-icon"></div>
     <h1>正在为您跳转到文档...</h1>
-    <a href="https://www.yuque.com/catnies/uhopov?#">如果您的浏览器不支持自动跳转，请点击这里</a>
+    <a id="redirect-link" href="#">如果您的浏览器不支持自动跳转，请点击这里</a>
     <script>
-        // 如果浏览器支持自动跳转，下面的代码将会被执行
-        document.location = 'https://www.yuque.com/catnies/uhopov?#';
+        const pageParam = 'page=xxxxxxx';
+        const baseUrl = 'https://www.yuque.com/catnies/uhopov';
+        const fullUrl = `${baseUrl}?${pageParam}`;
+
+        document.getElementById('redirect-meta').setAttribute('content', `10;url=${fullUrl}`);
+        document.getElementById('redirect-link').setAttribute('href', fullUrl);
+        document.location = fullUrl;
     </script>
 </body>
 </html>
