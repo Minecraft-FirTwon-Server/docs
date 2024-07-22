@@ -45,18 +45,27 @@
     </style>
 </head>
 <body>
-    <meta http-equiv="refresh" content="10;url=" id="redirect-meta">
     <div class="loading-icon"></div>
     <h1>正在为您跳转到文档...</h1>
-    <a id="redirect-link" href="#">如果您的浏览器不支持自动跳转，请点击这里</a>
+    <a id="manualLink" href="#">如果您的浏览器不支持自动跳转，请点击这里</a>
     <script>
-        const pageParam = 'page=xxxxxxx';
-        const baseUrl = 'https://www.yuque.com/catnies/uhopov';
-        const fullUrl = `${baseUrl}?${pageParam}`;
+        // 从当前URL获取page参数的值
+        var urlParams = new URLSearchParams(window.location.search);
+        var pageParam = urlParams.get('page');
+        
+        // 如果page参数存在，则拼接目标URL，否则使用默认URL
+        var baseURL = 'https://www.yuque.com/catnies/uhopov';
+        var targetURL = pageParam ? baseURL + '?page=' + pageParam : baseURL;
+        
+        // 设置meta标签和a标签的href属性
+        var metaRefresh = document.createElement('meta');
+        metaRefresh.setAttribute('http-equiv', 'refresh');
+        metaRefresh.setAttribute('content', '10;url=' + targetURL);
+        document.head.appendChild(metaRefresh);
+        document.getElementById('manualLink').setAttribute('href', targetURL);
 
-        document.getElementById('redirect-meta').setAttribute('content', `10;url=${fullUrl}`);
-        document.getElementById('redirect-link').setAttribute('href', fullUrl);
-        document.location = fullUrl;
+        // 自动跳转
+        window.location.href = targetURL;
     </script>
 </body>
 </html>
