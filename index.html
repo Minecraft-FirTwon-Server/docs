@@ -55,7 +55,7 @@
         
         // 如果page参数存在，则拼接目标URL，否则使用默认URL
         var baseURL = 'https://www.yuque.com/catnies/uhopov';
-        var targetURL = pageParam ? baseURL + pageParam : baseURL;
+        var targetURL = pageParam ? baseURL + '/' + pageParam : baseURL;
         
         // 设置meta标签和a标签的href属性
         var metaRefresh = document.createElement('meta');
